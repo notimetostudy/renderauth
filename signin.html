@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+  <form>
+   email:<input type="email" placeholder="enter email" id="email" required />
+      <label>password:</label
+      ><input
+        type="password"
+        placeholder="enter password"
+        id="password"
+        required
+      />
+      <button id="submit">submit</button>
+      </form>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+      import {
+        getAuth,
+        signinWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDiudcKWjOrpjB3vpzGOn5XITs2x2BUtYQ",
+        authDomain: "cloudsempractice.firebaseapp.com",
+        projectId: "cloudsempractice",
+        storageBucket: "cloudsempractice.appspot.com",
+        messagingSenderId: "736070515424",
+        appId: "1:736070515424:web:6124a7ed8abb5842072e85",
+        measurementId: "G-V3M19V2FXN",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth();
+
+      var email = document.getElementById("email")
+      var password = document.getElementById("password")
+      var submit = document.getElementById("submit")
+
+      submit.addEventListener("click",(e)=>{
+        
+        var obj = {
+            email : email.value,
+            password : password.value
+        }
+        signInWithEmailAndPassword(auth,obj.email,obj.password).then((e)=>{
+            console.log("success");
+        }).catch((e)=>{
+            console.log(e);
+        })
+      })
+
+
+      
+  </body>
+</html>
